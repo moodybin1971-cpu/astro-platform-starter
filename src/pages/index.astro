@@ -1,19 +1,27 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Markdown from '../components/Markdown.astro';
-
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
-
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
+// كود بوابة مستشفى حلوان
 ---
-
-<Layout title="Welcome to Astro.">
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
-</Layout>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <title>البوابة الإلكترونية لمستشفى حلوان</title>
+    <style>
+      body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background-color: #f4f7f6; }
+      .container { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); max-width: 500px; margin: auto; }
+      h1 { color: #004a99; font-size: 24px; }
+      input, button { width: 100%; padding: 12px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box; }
+      button { background-color: #004a99; color: white; font-weight: bold; cursor: pointer; border: none; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>البوابة الإلكترونية لمستشفى حلوان للصحة النفسية وعلاج الإدمان</h1>
+      <p>نموذج حجز موعد للمرضى</p>
+      <form name="bookings" method="POST" data-netlify="true">
+        <input type="text" name="patient_name" placeholder="اسم المريض بالكامل" required />
+        <input type="tel" name="phone" placeholder="رقم الهاتف للتواصل" required />
+        <button type="submit">إرسال طلب الحجز</button>
+      </form>
+    </div>
+  </body>
+</html>
