@@ -1,0 +1,8 @@
+<html lang="ar" dir="rtl">
+  <head><meta charset="utf-8" /><title>تم الحجز</title></head>
+  <body style="text-align: center; padding: 50px; font-family: sans-serif;">
+    <h1 style="color: #28a745;">تم استلام طلب الحجز بنجاح!</h1>
+    <p>شكراً لك، سيتم مراجعة طلبك في المستشفى.</p>
+    <a href="/">العودة للرئيسية</a>
+  </body>
+</html>
