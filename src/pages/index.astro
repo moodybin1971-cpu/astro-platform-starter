@@ -1,11 +1,33 @@
-      <form name="hospital-booking" method="POST" action="/success" data-netlify="true">
+---
+// البوابة الإلكترونية لمستشفى حلوان - النسخة النهائية المضمونة
+---
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>البوابة الإلكترونية لمستشفى حلوان</title>
+    <style>
+      body { font-family: 'Segoe UI', Tahoma, sans-serif; text-align: center; padding: 20px; background-color: #f4f7f9; }
+      .container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); max-width: 550px; margin: auto; border-top: 10px solid #0056b3; }
+      h1 { color: #0056b3; font-size: 22px; margin-bottom: 20px; }
+      label { display: block; text-align: right; margin: 10px 5% 5px; font-weight: bold; color: #444; }
+      input, select, button { width: 90%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ccc; box-sizing: border-box; font-size: 16px; }
+      button { background-color: #28a745; color: white; font-weight: bold; cursor: pointer; border: none; margin-top: 10px; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>البوابة الإلكترونية لمستشفى حلوان للصحة النفسية وعلاج الإدمان</h1>
+      <p>نظام حجز المواعيد الإلكتروني</p>
+
+      <form name="hospital-booking" method="POST" data-netlify="true">
         <input type="hidden" name="form-name" value="hospital-booking" />
 
         <label>اسم المريض (ثلاثي):</label>
         <input type="text" name="patient_name" placeholder="أدخل الاسم الثلاثي" required />
 
         <label>الرقم القومي (14 رقم):</label>
-        <input type="text" name="national_id" placeholder="14 رقم" pattern="[0-9]{14}" required />
+        <input type="text" name="national_id" placeholder="أدخل 14 رقم" pattern="[0-9]{14}" required />
 
         <label>رقم التذكرة العلاجية:</label>
         <input type="text" name="ticket_number" placeholder="رقم التذكرة" required />
@@ -27,3 +49,6 @@
 
         <button type="submit">تأكيد الحجز وإرسال الطلب</button>
       </form>
+    </div>
+  </body>
+</html>
