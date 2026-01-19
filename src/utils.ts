@@ -1,52 +1,36 @@
-import blobshape from 'blobshape';
-import { uniqueNamesGenerator, adjectives, animals } from 'unique-names-generator';
 
-export function randomInt(min: number, max: number) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
+      <form name="hospital-booking" method="POST" action="/?success=true" data-netlify="true">
+        <input type="hidden" name="form-name" value="hospital-booking" />
 
-export function uniqueName() {
-    const config = {
-        dictionaries: [adjectives, animals],
-        separator: '-',
-        length: 2
-    };
-    return uniqueNamesGenerator(config) + '-' + randomInt(100, 999);
-}
+        <label>اسم المريض (ثلاثي):</label>
+        <input type="text" name="patient_name" placeholder="أدخل الاسم الثلاثي" required />
 
-export function generateBlob(parameters?: any) {
-    const gradientColors = [
-        ['#2E3192', '#1BFFFF'],
-        ['#93A5CF', '#E4EfE9'],
-        ['#BFF098', '#6FD6FF'],
-        ['#A1C4FD', '#C2E9FB'],
-        ['#11998E', '#38EF7D'],
-        ['#D8B5FF', '#1EAE98']
-    ];
+        <label>الرقم القومي (14 رقم):</label>
+        <input type="text" name="national_id" placeholder="أدخل 14 رقم" pattern="[0-9]{14}" required />
 
-    parameters = {
-        seed: null,
-        size: 512,
-        edges: randomInt(3, 20),
-        growth: randomInt(2, 9),
-        name: uniqueName(),
-        colors: gradientColors[randomInt(0, gradientColors.length - 1)],
-        ...parameters
-    };
-    const { path: svgPath, seedValue: seed } = blobshape(parameters);
-    return { parameters: { ...parameters, seed }, svgPath };
-}
+        <label>رقم التذكرة العلاجية:</label>
+        <input type="text" name="ticket_number" placeholder="رقم التذكرة العلاجية" required />
 
-export function cacheHeaders(maxAgeDays = 365, cacheTags?: string[]): Record<string, string> {
-    // As far as the browser is concerned, it must revalidate on every request.
-    // However, Netlify CDN is told to keep the content cached for up to maxAgeDays (note: new deployment bust the cache by default).
-    // We're also setting cache tags to be able to later purge via API (see: https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/)
-    const headers = {
-        'Cache-Control': 'public, max-age=0, must-revalidate', // Tell browsers to always revalidate
-        'Netlify-CDN-Cache-Control': `public, max-age=${maxAgeDays * 86_400}, must-revalidate` // Tells Netlify CDN the max allwed cache duration
-    };
-    if (cacheTags?.length > 0) headers['Cache-Tag'] = cacheTags.join(',');
-    return headers;
-}
+        <label>يوم الحجز المطلوب:</label>
+        <select name="appointment_day" required>
+          <option value="">اختر اليوم...</option>
+          <option>السبت</option><option>الأحد</option><option>الاثنين</option>
+          <option>الثلاثاء</option><option>الأربعاء</option><option>الخميس</option>
+        </select>
 
-export const uploadDisabled = import.meta.env.PUBLIC_DISABLE_UPLOADS?.toLowerCase() === 'true';
+        <label>العيادة التخصصية:</label>
+        <select name="clinic_type" required>
+          <option value="">اختر العيادة...</option>
+          <option>النفسية بالغين</option><option>إدمان بالغين</option><option>مراهقين نفسي</option>
+          <option>مراهقين إدمان</option><option>أطفال</option><option>صحة المرأة</option>
+          <option>واحة بالغين</option><option>واحة أطفال</option><option>خفض الضرر</option>
+        </select>
+
+        <button type="submit">تأكيد الحجز وإرسال الطلب</button>
+      </form>
+
+      <script is:inline>
+        if (window.location.search.includes('success=true')) {
+          alert('تم استلام طلب الحجز بنجاح! شكراً لك.');
+        }
+      </script>
